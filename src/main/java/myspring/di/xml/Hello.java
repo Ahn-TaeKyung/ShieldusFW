@@ -8,9 +8,11 @@ public class Hello {
 	List<String> names;
 
 	public Hello() {
+		System.out.println(this.getClass().getName() + "기본 생성자 호출");
 	}
 
 	public Hello(String name, Printer printer) {
+		System.out.println(this.getClass().getName() + "오버로딩 생성자 호출");
 		this.name = name;
 		this.printer = printer;
 	}
@@ -20,14 +22,17 @@ public class Hello {
 	}
 
 	public void setNames(List<String> list) {
+		System.out.println("setNames() 메소드 호출");
 		this.names = list;
 	}
 
 	public void setName(String name) {
+		System.out.println("setName() 메소드 호출" + name);
 		this.name = name;
 	}
 
 	public void setPrinter(Printer printer) {
+		System.out.println("setPrinter() 메소드 호출" + printer.getClass().getName());
 		this.printer = printer;
 	}
 
