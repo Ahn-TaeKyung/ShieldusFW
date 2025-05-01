@@ -6,8 +6,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- dao, service auto scaaning -->
-	<context:component-scan base-package="**.service, **.dao" />
+	<!-- dao, service auto scanning -->
+	<context:component-scan base-package="**.service,**.dao" />
 	
 	<context:property-placeholder location="classpath:values.properties"/>
 	
@@ -18,13 +18,14 @@
 		p:username="${db.username}"
 		p:password="${db.password}"
 	/>
+	
 	<!-- SqlSessionFactoryBean 설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<!-- setDataSource(DataSource source) -->
+		<!-- setDataSource(DataSource source) -->
 		<property name="dataSource" ref="dataSource" />
-		<!-- setConfigLocation(Resource configLocation) MyBatis config xml 설정-->
+		<!-- setConfigLocation(Resource configLocation) MyBatis config xml-->
 		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
-		<!-- setMapperLocations(Resource... mapperLocations) SQL문이 포함된 mapper xml 설정-->
+		<!-- setMapperLocations(Resource... mapperLocations) SQL문이 포함된 mapper xml -->
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:mybatis/*Mapper.xml</value>
@@ -32,14 +33,14 @@
 		</property>
 	</bean>
 	
-	<!-- SqlSession 설정 constructor injection 방식만 가능함 (기본생성자가 없기 때문에)-->
+	<!-- SqlSession 설정 consturctor injection 방식만 가능함 (기본생성자가 없기 때문에)-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
-	<!-- MapperScannerConfigurer 설정 Mapper 인터페이스를 스캐닝 하는 역할 -->
+	<!-- MapperScannerConfigurer 설정  Mapper 인터페이스를 스캐닝 하는 역할 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="myspring.**.dao.mapper"/>
+		<property name="basePackage" value="**.dao.mapper"/>
 		<property name="sqlSessionTemplateBeanName" value="sqlSession" /> 
 	</bean>
 </beans>

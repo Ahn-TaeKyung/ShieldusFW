@@ -15,4 +15,3 @@ public interface UserMapper {
 	void updateUser(UserVO userVO);
 	void deleteUser(String id);
 }
-

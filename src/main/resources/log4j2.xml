@@ -16,7 +16,6 @@
 			
 		<Logger name="myspring" level="DEBUG" />
 		<Logger name="mylab" level="DEBUG" />
-		
 
 		<Root level="DEBUG">
 			<AppenderRef ref="console" level="DEBUG" />

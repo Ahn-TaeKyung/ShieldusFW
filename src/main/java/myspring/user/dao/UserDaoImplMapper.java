@@ -41,13 +41,3 @@ public class UserDaoImplMapper implements UserDao {
 		System.out.println("삭제된 Record with ID = " + id ); 
 	}
 }
-
-
-
-
-
-
-
-
-
-
